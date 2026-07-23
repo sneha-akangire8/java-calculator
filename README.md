@@ -1,90 +1,214 @@
-# Java Calculator REST API
+# 🚀 Java Calculator CI/CD Project using Jenkins, Docker & AWS EC2
 
-A simple Spring Boot REST API that performs the addition of two integer numbers.
+## 📌 Project Overview
 
-## 🚀 Features
+This project demonstrates a complete CI/CD pipeline for a Java Spring Boot application using Jenkins, Docker, Docker Hub, and AWS EC2.
 
-- Add two integer numbers
-- REST API built with Spring Boot
-- Unit testing using JUnit 5
-- Maven build automation
+The application is built using Spring Boot, containerized with Docker, automatically built and tested using Jenkins, pushed to Docker Hub, and deployed on an Amazon EC2 instance.
 
-## 🛠️ Tech Stack
+---
+
+## 🏗️ Architecture
+
+```
+                Developer
+                    │
+                    ▼
+               GitHub Repository
+                    │
+                    ▼
+            Jenkins CI Pipeline
+                    │
+       ┌────────────┴────────────┐
+       │                         │
+       ▼                         ▼
+ Maven Build               Run Unit Tests
+       │
+       ▼
+ Docker Image Build
+       │
+       ▼
+ Docker Hub
+       │
+       ▼
+ AWS EC2 Instance
+       │
+       ▼
+ Docker Container
+       │
+       ▼
+ Java Spring Boot Application
+```
+
+---
+
+# 🛠️ Technologies Used
 
 - Java 17
 - Spring Boot
 - Maven
-- JUnit 5
+- Git
+- GitHub
+- Jenkins
+- Docker
+- Docker Hub
+- AWS EC2 (Amazon Linux)
+- Linux
+- IntelliJ IDEA
 
-## 📂 Project Structure
+---
+
+# 📂 Project Structure
 
 ```
-java-calculator
+java-calculator/
 │
-├── src
-│   ├── main
-│   │   ├── java
-│   │   │   └── com.example.calculator
-│   │   │       ├── CalculatorApplication.java
-│   │   │       ├── CalculatorController.java
-│   │   │       └── Calculator.java
-│   │   └── resources
-│   │       └── application.properties
-│   │
-│   └── test
-│       └── java
-│           └── com.example.calculator
-│               └── JavaCalculatorApplicationTests.java
+├── src/
+│   ├── main/
+│   └── test/
 │
+├── Dockerfile
+├── Jenkinsfile
 ├── pom.xml
-├── README.md
-└── .gitignore
+├── mvnw
+├── mvnw.cmd
+├── .mvn/
+└── README.md
 ```
 
-## 🌐 API Endpoints
+---
 
-### Home
+# ⚙️ Jenkins Pipeline Stages
 
-```
-GET /
-```
+✔ Checkout Source Code
 
-Response:
+✔ Maven Build
 
-```
-Welcome to the Java Calculator Application!
-```
+✔ Unit Testing
 
-### Add Two Numbers
+✔ Docker Image Build
 
-```
-GET /add?num1=10&num2=20
-```
+---
 
-Response:
+# 🐳 Docker Commands
 
-```
-The sum of 10 and 20 is: 30
-```
-
-## ▶️ Run the Application
+## Build Image
 
 ```bash
-./mvnw spring-boot:run
+docker build -t java-calculator .
 ```
 
-For Windows:
+## Tag Image
 
 ```bash
-mvnw.cmd spring-boot:run
+docker tag java-calculator snehaakangire8/java-calculator:latest
 ```
 
-## 🧪 Run Unit Tests
+## Push Image
 
 ```bash
-mvnw.cmd clean test
+docker push snehaakangire8/java-calculator:latest
 ```
 
-## 👩‍💻 Author
+---
+
+# ☁️ AWS EC2 Deployment
+
+## Pull Docker Image
+
+```bash
+docker pull snehaakangire8/java-calculator:latest
+```
+
+## Run Container
+
+```bash
+docker run -d --name java-calculator -p 8080:8080 snehaakangire8/java-calculator:latest
+```
+
+## Verify Running Container
+
+```bash
+docker ps
+```
+
+---
+
+# 🌐 Access Application
+
+```
+http://<EC2-Public-IP>:8080
+```
+
+Application Response:
+
+```
+Welcome to Java Application
+```
+
+---
+
+# 📋 Features
+
+- Spring Boot Application
+- Automated CI Pipeline using Jenkins
+- Maven Build Automation
+- Unit Testing
+- Docker Containerization
+- Docker Hub Integration
+- AWS EC2 Deployment
+- End-to-End CI/CD Workflow
+
+---
+
+# 📸 Project Screenshots
+
+Add screenshots of:
+
+- GitHub Repository
+- Jenkins Successful Pipeline
+- Docker Build Logs
+- Docker Hub Repository
+- AWS EC2 Instance
+- Running Docker Container
+- Browser Output
+
+---
+
+# 🚀 Future Enhancements
+
+- REST APIs for Calculator Operations
+- Automatic Deployment from Jenkins to EC2
+- Nginx Reverse Proxy
+- HTTPS using SSL
+- Kubernetes Deployment
+- Terraform Infrastructure
+- Monitoring using Prometheus & Grafana
+
+---
+
+# 👩‍💻 Author
 
 **Sneha Akangire**
+
+GitHub:
+https://github.com/sneha-akangire8
+
+Docker Hub:
+https://hub.docker.com/u/snehaakangire8
+
+---
+
+# ⭐ Learning Outcomes
+
+Through this project, I learned:
+
+- Git & GitHub
+- Jenkins CI Pipeline
+- Maven Build Automation
+- Docker Image Creation
+- Docker Hub Image Repository
+- AWS EC2 Deployment
+- Linux Commands
+- Spring Boot Deployment
+- End-to-End CI/CD Implementation
